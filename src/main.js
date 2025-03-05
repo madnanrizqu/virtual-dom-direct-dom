@@ -42,31 +42,25 @@ class TodoList {
   }
 
   render() {
-    // Clear existing list
     while (this.list.firstChild) {
       this.list.removeChild(this.list.firstChild);
     }
 
-    // Create and append todo elements
     this.todos.forEach((todo) => {
-      // Create main container
       const todoDiv = document.createElement("div");
       todoDiv.className = `flex items-center justify-between p-4 rounded-lg ${
         todo.completed ? "bg-gray-50" : "bg-white"
       } border border-gray-200 shadow-sm transition-all duration-200`;
 
-      // Create left section container
       const leftSection = document.createElement("div");
       leftSection.className = "flex items-center gap-3 flex-1";
 
-      // Create toggle button
       const toggleButton = document.createElement("button");
       toggleButton.className = `focus:outline-none transition-colors duration-200 ${
         todo.completed ? "text-green-500" : "text-gray-400 hover:text-gray-500"
       }`;
       toggleButton.addEventListener("click", () => this.toggleTodo(todo.id));
 
-      // Create SVG for toggle button
       const toggleSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "svg"
@@ -79,13 +73,11 @@ class TodoList {
       toggleSvg.setAttribute("stroke-width", "2");
 
       if (todo.completed) {
-        // Checkmark icon
         toggleSvg.innerHTML = `
           <circle cx="12" cy="12" r="10"/>
           <path d="M8 12l3 3 5-5"/>
         `;
       } else {
-        // X icon
         toggleSvg.innerHTML = `
           <circle cx="12" cy="12" r="10"/>
           <path d="M15 9l-6 6"/>
@@ -94,20 +86,17 @@ class TodoList {
       }
       toggleButton.appendChild(toggleSvg);
 
-      // Create text span
       const textSpan = document.createElement("span");
       textSpan.className = `flex-1 text-gray-800 ${
         todo.completed ? "line-through text-gray-500" : ""
       }`;
       textSpan.textContent = todo.text;
 
-      // Create delete button
       const deleteButton = document.createElement("button");
       deleteButton.className =
         "text-red-500 hover:text-red-600 focus:outline-none transition-colors duration-200";
       deleteButton.addEventListener("click", () => this.deleteTodo(todo.id));
 
-      // Create SVG for delete button
       const deleteSvg = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "svg"
@@ -125,20 +114,16 @@ class TodoList {
       `;
       deleteButton.appendChild(deleteSvg);
 
-      // Assemble the components
       leftSection.appendChild(toggleButton);
       leftSection.appendChild(textSpan);
       todoDiv.appendChild(leftSection);
       todoDiv.appendChild(deleteButton);
 
-      // Add to the list
       this.list.appendChild(todoDiv);
     });
 
-    // Toggle empty state visibility
     this.emptyState.style.display = this.todos.length ? "none" : "block";
   }
 }
 
-// Initialize the app
 window.todoList = new TodoList();
