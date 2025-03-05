@@ -7,11 +7,11 @@ A side-by-side comparison of two todo list implementations showcasing different 
 
 ## Article
 
-[Understanding the Virtual DOM vs Direct DOM Manipulation in 2024](https://medium.com/@your-username/virtual-dom-vs-direct-dom-comparison)
+[Virtual DOM vs Direct DOM](https://dev.to/madnanrizqu/virtual-dom-vs-direct-dom-474f)
 
 ## Live Demo
 
-[View the Live Comparison](https://virtual-dom-demo.netlify.app)
+[View the Live Comparison](https://virtual-dom-direct-dom.vercel.app/)
 
 ## Local Development
 
