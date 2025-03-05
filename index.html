@@ -1,13 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
+    <title>Virtual DOM vs Direct DOM</title>
+    <link href="./src/style.css" rel="stylesheet" />
+    <script src="./src/main.js" type="module"></script>
+    <script src="./src/main.tsx" type="module"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="flex gap-1 w-full">
+    <div id="vanilla" class="flex-1">
+      <div class="min-h-screen bg-purple-100 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md mx-auto">
+          <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <div class="px-6 py-8">
+              <h1 class="text-3xl font-bold text-gray-900 text-center mb-8">
+                Todo List (Vanilla DOM)
+              </h1>
+
+              <form id="todo-form" class="mb-6">
+                <div class="flex gap-2">
+                  <input
+                    type="text"
+                    id="todo-input"
+                    placeholder="Add a new todo..."
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  />
+                  <button
+                    type="submit"
+                    class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors duration-200"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="16" />
+                      <line x1="8" y1="12" x2="16" y2="12" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <div id="todo-list" class="space-y-3">
+                <!-- Todo items will be inserted here -->
+              </div>
+
+              <div id="empty-state" class="text-center text-gray-500 mt-8">
+                No todos yet. Add one above!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="root" class="flex-1"></div>
   </body>
 </html>
